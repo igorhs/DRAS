@@ -33,18 +33,19 @@ a {
 <h:body>
 		<h1
 			style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 20px;">
-			Cadastro de Professor</h1>
+			
+		<!-- CRIAÇÃO DA TABELA: "Cadastro de Professor". -->
+			
+		Cadastro de Professor</h1>
 		<h:form id="formProfessor">
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Numero: " />
 				<p:inputText value="#{professorManagedBean.professor.numero}" />
 				<p:outputLabel value="Nome: " />
 				<p:inputText value="#{professorManagedBean.professor.nome}" />
-
-
-
-
 			</p:panelGrid>
+			
+			<!-- CRIAÇÃO DOS BOTÕES: "Salvar", "Pesquisar", "Alterar" e "Excluir". -->
 			<p:commandButton value="Salvar"
 				action="#{professorManagedBean.salvar}"
 				update=":formProfessor, :formTableProfessor" disabled="false"
@@ -63,8 +64,9 @@ a {
 			<p:commandButton value="Excluir"
 				action="#{professorManagedBean.excluir}"
 				update=":formProfessor, :formTableProfessor" disabled="false" />
-
 		</h:form>
+		
+	<!-- CRIAÇÃO DA TABELA DE DADOS PARA LISTAGEM DOS RESULTADOS. -->
 	<h:form id="formTableProfessor">
 		<p:dataTable id="tableProfessor"
 			value="#{professorManagedBean.professores}" var="po" editable="true"
@@ -84,15 +86,13 @@ a {
 					update=":formTableProfessor, :formPickList "
 					actionListener="#{professorManagedBean.addCursoToProfessor(po)}" />
 			</p:column>
-
 		</p:dataTable>
-
-
 	</h:form>
 
+	<!-- CRIAÇÃO DAS TABELAS DE ASSOCIAÇÃO ACESSADO ATRAVÉS DO BOTÃO "Opções". -->
 	<p:dialog header="Seleção de Curso" widgetVar="dlgAddCurso"
 		modal="true" height="400" width="800">
-		<h:outputText value="Selecione um ou mais curso" />
+		<h:outputText value="Selecione um ou mais cursos" />
 		<h:form id="formPickList">
 			<p:pickList id="pickListProfessor"
 				value="#{professorManagedBean.cursos}" var="f" itemLabel="#{f.nome}"
@@ -106,11 +106,8 @@ a {
 		</h:form>
 	</p:dialog>
 
+	<!-- CRIAÇÃO DO BOTÃO "Voltar" PARA RETORNAR AO MENU PRINCIPAL. -->
 	<a href="../menu.html"><div id="voltar">Voltar</div></a>
 	
 </h:body>
 </html>
-
-
-
-
