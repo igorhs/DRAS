@@ -33,8 +33,10 @@ a {
 <h:body>
 	<h1
 		style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 10px;">
-		Dados do Curso</h1>
-		<h:form id="formAluno">
+		
+		<!-- CRIAÇÃO DA TABELA: "Dados do Curso". -->
+	Dados do Curso</h1>
+	<h:form id="formAluno">
 			<p:panelGrid columns="2">
 
 				<p:outputLabel for="curso" value="Curso:" />
@@ -45,22 +47,23 @@ a {
 					<f:selectItems value="#{alunoManagedBean.cursos}" var="aux"
 						itemValue="#{aux}" itemLabel="#{aux.nome}" />
 				</p:selectOneMenu>
-
-
 			</p:panelGrid>
 
-			<p:commandButton value="Pesquisar"
-				action="#{alunoManagedBean.PesquisarAlunos}"
-				update=":formAluno, :tableAluno, :tableProfessores" disabled="false"
-				style="
-                	margin-top: 5px;
-                	margin-bottom: 5px;" />
-		</h:form>
+		<!-- CRIAÇÃO DO BOTÃO: "Pesquisar". -->
+		<p:commandButton value="Pesquisar"
+			action="#{alunoManagedBean.PesquisarAlunos}"
+			update=":formAluno, :tableAluno, :tableProfessores" disabled="false"
+			style="
+        	margin-top: 5px;
+        	margin-bottom: 5px;" />
+	</h:form>
 
+	<!-- CRIAÇÃO DAS TABELAS DE DADOS PARA A ASSOCIAÇÃO E LISTAGEM DOS RESULTADOS. -->
 	<h1
 		style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 10px;">
-		Docentes</h1>
-
+	Docentes</h1>
+	
+	<!-- TABELA DE LISTAGEM E ASSOCIAÇÃO DOS PROFESSORES CADASTRADOS EM DETERMINADO CURSO. -->
 	<p:dataTable id="tableProfessores"
 		value="#{alunoManagedBean.professorCurso}" var="prof">
 		<p:column headerText="Numero">
@@ -69,13 +72,13 @@ a {
 		<p:column headerText="Nome">
 			<p:outputLabel value="#{prof.nome}" />
 		</p:column>
-
 	</p:dataTable>
 
 	<h1
 		style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 10px;">
-		Alunos Matriculados</h1>
+	Alunos Matriculados</h1>
 
+	<!-- TABELA DE LISTAGEM E ASSOCIAÇÃO DOS ALUNOS CADASTRADOS EM DETERMINADO CURSO. -->
 	<p:dataTable id="tableAluno" value="#{alunoManagedBean.alunosCurso}"
 		var="alu">
 		<p:column headerText="Matrícula">
@@ -84,14 +87,10 @@ a {
 		<p:column headerText="Nome">
 			<p:outputLabel value="#{alu.nome}" />
 		</p:column>
-
 	</p:dataTable>
-
+	
+	<!-- CRIAÇÃO DO BOTÃO "Voltar" PARA RETORNAR AO MENU PRINCIPAL. -->
 	<a href="../menu.html"><div id="voltar">Voltar</div></a>
 
 </h:body>
 </html>
-
-
-
-
