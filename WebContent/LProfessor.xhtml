@@ -33,10 +33,10 @@ a {
 <h:body>
 	<h1
 		style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 10px;">
-		Dados do Professor:</h1>
+	<!-- CRIAÇÃO DA TABELA: "Dados do Professor". -->
+	Dados do Professor:</h1>
 		<h:form id="formProfessor">
 			<p:panelGrid columns="2">
-
 				<p:outputLabel for="curso" value="Professor:" />
 				<p:selectOneMenu id="curso"
 					value="#{professorManagedBean.professor}" style="width:200px"
@@ -46,10 +46,9 @@ a {
 					<f:selectItems value="#{professorManagedBean.professores}"
 						var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}" />
 				</p:selectOneMenu>
-
-
 			</p:panelGrid>
 
+			<!-- CRIAÇÃO DO BOTÃO: "Pesquisar". -->
 			<p:commandButton value="Pesquisar"
 				action="#{professorManagedBean.PesquisarCurso}"
 				update=":formProfessor, :tableProfessor" disabled="false"
@@ -58,10 +57,12 @@ a {
                 	margin-bottom: 5px;" />
 		</h:form>
 
+	<!-- CRIAÇÃO DA TABELA DE DADOS PARA A ASSOCIAÇÃO E LISTAGEM DOS RESULTADOS. -->
 	<h1
 		style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 10px;">Cursos
-		Ministrados pelo Docente</h1>
+	Ministrados pelo Docente</h1>
 
+	<!-- TABELA DE LISTAGEM E ASSOCIAÇÃO DO PROFESSOR QUE MINISTRA DETERMINADO CURSO. -->
 	<p:dataTable id="tableProfessor"
 		value="#{professorManagedBean.cursoProfessor}" var="cu">
 		<p:column headerText="Codigo">
@@ -70,9 +71,9 @@ a {
 		<p:column headerText="Nome">
 			<p:outputLabel value="#{cu.nome}" />
 		</p:column>
-
 	</p:dataTable>
 
+	<!-- CRIAÇÃO DO BOTÃO "Voltar" PARA RETORNAR AO MENU PRINCIPAL. -->
 	<a href="../menu.html"><div id="voltar">Voltar</div></a>
 
 </h:body>
