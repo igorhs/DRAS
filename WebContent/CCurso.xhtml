@@ -31,44 +31,52 @@ a {
 </style>
 </h:head>
 <h:body>
-		<h1
-			style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 20px;">
-			Cadastro de Curso</h1>
+	<h1
+		style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 20px;">
+			
+		<!-- CRIAÇÃO DA TABELA: "Cadastro de Curso". -->
+			
+	Cadastro de Curso</h1>
 		<h:form id="formCurso">
-			<p:panelGrid columns="2">
-				<p:outputLabel value="Codigo: " />
-				<p:inputText value="#{cursoManagedBean.curso.codigo}" />
-				<p:outputLabel value="Nome: " />
-				<p:inputText value="#{cursoManagedBean.curso.nome}" />
-
-
-			</p:panelGrid>
+				<p:panelGrid columns="2">
+						
+					<p:outputLabel value="Codigo: " />
+					<p:inputText value="#{cursoManagedBean.curso.codigo}" />
+					<p:outputLabel value="Nome: " />
+					<p:inputText value="#{cursoManagedBean.curso.nome}" />
+				</p:panelGrid>
+					
+			<!-- CRIAÇÃO DOS BOTÕES: "Salvar", "Pesquisar", "Alterar" e "Excluir". -->	
 			<p:commandButton value="Salvar" action="#{cursoManagedBean.salvar}"
 				update=":formCurso, :tableCurso" disabled="false"
 				style="
-                	margin-top: 10px;
-                	margin-bottom: 10px;" />
-
+		        	margin-top: 10px;
+		        	margin-bottom: 10px;" />
+		
 			<p:commandButton value="Pesquisar"
 				action="#{cursoManagedBean.pesquisar}"
 				update=":formCurso, :tableCurso" disabled="false" />
-
+		
 			<p:commandButton value="Alterar" action="#{cursoManagedBean.alterar}"
 				update=":formCurso, :tableCurso" disabled="false" />
-
+		
 			<p:commandButton value="Excluir" action="#{cursoManagedBean.excluir}"
 				update=":formCurso, :tableCurso" disabled="false" />
 		</h:form>
+		
+	<!-- CRIAÇÃO DA TABELA DE DADOS PARA LISTAGEM DOS RESULTADOS. -->
+		
 	<p:dataTable id="tableCurso" value="#{cursoManagedBean.cursos}"
-		var="cu">
+		var="c">
 		<p:column headerText="Matrícula">
-			<p:outputLabel value="#{cu.codigo}" />
+			<p:outputLabel value="#{c.codigo}" />
 		</p:column>
 		<p:column headerText="Nome">
-			<p:outputLabel value="#{cu.nome}" />
+			<p:outputLabel value="#{c.nome}" />
 		</p:column>
 	</p:dataTable>
 
+	<!-- CRIAÇÃO DO BOTÃO "Voltar" PARA RETORNAR AO MENU PRINCIPAL. -->
 	<a href="../menu.html"><div id="voltar">Voltar</div></a>
 
 </h:body>
