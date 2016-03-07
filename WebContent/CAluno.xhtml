@@ -33,6 +33,9 @@ a {
 <h:body>
 	<h1
 		style="color: blue; font-family: sans-serif; text-align: center; text-decoration: inherit; letter-spacing: 1px; font-size: 24px; margin-top: 10px;">
+		
+		<!-- CRIAÇÃO DA TABELA: "Cadastrar Aluno". -->
+		
 		Cadastrar Aluno</h1>
 		<h:form id="formAluno">
 			<p:panelGrid columns="2">
@@ -43,15 +46,16 @@ a {
 
 				<p:outputLabel for="curso" value="Curso:" />
 				<p:selectOneMenu id="curso" value="#{alunoManagedBean.curso}"
-					style="width:200px" converter="ConverterCurso" > <!--  converter="ConverterCurso" Isso aqui é pra lembra voce de colocar denovo-->
+					style="width:200px" converter="ConverterCurso" >
 					<f:selectItem itemLabel="Selecione o Curso" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{alunoManagedBean.cursos}" var="aux"
 						itemValue="#{aux}" itemLabel="#{aux.nome}" />
 				</p:selectOneMenu>
-
-
 			</p:panelGrid>
+			
+			<!-- CRIAÇÃO DOS BOTÕES: "Salvar", "Pesquisar", "Alterar" e "Excluir". -->
+			
 			<p:commandButton value="Salvar" action="#{alunoManagedBean.salvar}"
 				update=":formAluno, :tableAluno" disabled="false"
 				style="
@@ -70,6 +74,8 @@ a {
 				update=":formAluno, :tableAluno" disabled="false" />
 		</h:form>
 
+	<!-- CRIAÇÃO DA TABELA DE DADOS PARA LISTAGEM DOS RESULTADOS. -->
+	
 	<p:dataTable id="tableAluno" value="#{alunoManagedBean.alunos}"
 		var="alu">
 		<p:column headerText="Matrícula">
@@ -84,6 +90,8 @@ a {
 
 	</p:dataTable>
 
+	<!-- CRIAÇÃO DO BOTÃO "Voltar" PARA RETORNAR AO MENU PRINCIPAL. -->
+	
 	<a href="../menu.html"><div id="voltar">Voltar</div></a>
 
 </h:body>
